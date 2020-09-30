@@ -1501,7 +1501,7 @@ extension Reactive where Base: DataRequest {
 
    - returns: An instance of `Observable<(HTTPURLResponse, T)>`
    */
-  public func responseDecodable<T: Decodable>(decoder: DataDecoder = JSONDecoder()) -> Observable<(HTTPURLResponse, T)> {
+    public func responseDecodable<T: Decodable>(decoder: Alamofire.DataDecoder = JSONDecoder()) -> Observable<(HTTPURLResponse, T)> {
     return responseResult(responseSerializer: DecodableResponseSerializer(decoder: decoder))
   }
 
@@ -1512,7 +1512,7 @@ extension Reactive where Base: DataRequest {
 
    - returns: An instance of `Observable<T>`
    */
-  public func decodable<T: Decodable>(decoder: DataDecoder = JSONDecoder()) -> Observable<T> {
+    public func decodable<T: Decodable>(decoder: Alamofire.DataDecoder = JSONDecoder()) -> Observable<T> {
     return result(responseSerializer: DecodableResponseSerializer(decoder: decoder))
   }
 }
